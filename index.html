@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="detach">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Sorteio ao vivo — Detach! 26</title>
+<link rel="icon" href="assets/detach-symbol.svg" type="image/svg+xml">
+<script>
+  /* aplica o tema antes de pintar a página (evita piscar) */
+  (function () {
+    var t = new URLSearchParams(location.search).get('tema');
+    if (t === 'inspect') document.documentElement.dataset.theme = 'inspect';
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Code+Pro:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+  <div class="app" id="app">
+
+    <!-- ============ PAINEL DE CONTROLE ============ -->
+    <aside class="panel" id="panel">
+
+      <div class="block logo-block">
+        <img class="logo" id="logoImg" src="assets/detach-logo-horizontal.svg" alt="Detach! 26">
+      </div>
+
+      <div class="block title-block">
+        <h1 class="brand-title">Sorteio</h1>
+        <p class="brand-sub" id="eventName">Detach! 26</p>
+      </div>
+
+      <div class="block">
+        <p class="label">Importar</p>
+        <button class="btn-import" id="importBtn" type="button">
+          <span>Importar CSV</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+        </button>
+        <input type="file" id="fileInput" accept=".csv,text/csv,text/plain" hidden>
+        <p class="hint">Colunas Nome / Email, separadas por ; ou ,. Ou arraste o arquivo para qualquer lugar da tela.</p>
+        <textarea class="paste-area" id="pasteArea" placeholder="Ou cole os nomes — um por linha"></textarea>
+      </div>
+
+      <div class="block counter-block">
+        <span class="counter-num" id="counterNum">0</span>
+        <span class="counter-label">Participantes</span>
+      </div>
+
+      <div class="block actions-block">
+        <button class="btn-draw" id="drawBtn" type="button" disabled>Sortear</button>
+        <button class="btn-secondary" id="presentBtn" type="button">Modo apresentação</button>
+      </div>
+
+      <div class="block history-block">
+        <div class="history-head">
+          <p class="label">Vencedores</p>
+          <button class="btn-link" id="exportBtn" type="button" disabled>Exportar CSV</button>
+        </div>
+        <ul class="history-list" id="historyList"></ul>
+      </div>
+
+      <div class="block footer-block">
+        <button class="btn-link danger" id="clearBtn" type="button">Limpar tudo</button>
+        <span class="shortcuts">ESPAÇO sorteia · F tela cheia · P apresentação</span>
+      </div>
+
+    </aside>
+
+    <!-- ============ PALCO ============ -->
+    <main class="stage" id="stage">
+
+      <div class="ticker" id="ticker" aria-hidden="true"><div class="ticker-track" id="tickerTrack"></div></div>
+
+      <div class="present-brand">
+        <img class="logo" id="presentLogoImg" src="assets/detach-logo-horizontal.svg" alt="">
+      </div>
+
+      <div class="stage-eyebrow">
+        <span class="dot" id="liveDot"></span>
+        <span>Sorteio ao vivo</span>
+      </div>
+
+      <div class="winner-glow" id="winnerGlow"></div>
+      <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+      <div class="stage-center" aria-live="polite">
+        <p class="stage-status" id="stageStatus">Aguardando&hellip;</p>
+        <h2 class="name-display idle" id="nameDisplay"><span class="name-text" id="nameText">Pressione ESPAÇO para sortear</span></h2>
+        <p class="stage-sub" id="stageSub">&nbsp;</p>
+      </div>
+
+      <div class="present-history" id="presentHistory"></div>
+
+      <span class="exit-hint">ESC sai do modo apresentação</span>
+    </main>
+
+  </div>
+
+  <div class="drop-overlay" id="dropOverlay">Solte o CSV para importar</div>
+  <div class="toast" id="toast" role="status"></div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

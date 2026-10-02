@@ -1,0 +1,102 @@
+/* ============================================================
+   TOKENS
+   Primitivos da marca → tokens semânticos por tema.
+   Para trocar a identidade, mexa só aqui.
+============================================================ */
+
+/* ---------- Fontes oficiais (opcional) ----------
+   A Detach! usa Alfabet + Scale VF (fontes pagas). Se a licença permitir
+   uso web, coloque os .woff2 em /fonts e descomente:
+
+@font-face { font-family: "Alfabet"; src: url("../fonts/Alfabet-Medium.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Alfabet"; src: url("../fonts/Alfabet-SemiBold.woff2") format("woff2"); font-weight: 600 900; font-display: swap; }
+@font-face { font-family: "Scale VF"; src: url("../fonts/ScaleVF.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+
+   Sem os arquivos, o navegador usa a Alfabet se estiver instalada no
+   computador e, se não, cai para a Archivo (Google Fonts).
+------------------------------------------------- */
+
+:root {
+  /* primitivos Detach! 26 (extraídos de detach.com.br) */
+  --dtch-cream-50:  #FFF8F5;
+  --dtch-cream-100: #FBF3E8;
+  --dtch-cream-200: #FFEAE0;
+  --dtch-ink:       #1E0B0B;
+  --dtch-black:     #000000;
+  --dtch-orange:    #FF4B27;
+  --dtch-purple:    #7029FF;
+  --dtch-lilac:     #B499FF;
+  --dtch-sky:       #88C9F7;
+  --dtch-pink:      #FF0095;
+  --dtch-green:     #69E098;
+  --dtch-mint:      #A8F8E4;
+
+  /* primitivos Inspect! */
+  --insp-bg:      #1D1D1D;
+  --insp-surface: #262626;
+  --insp-text:    #F5EDEB;
+  --insp-green:   #69E098;
+  --insp-pink:    #F89EC2;
+
+  --ease-out: cubic-bezier(.16,.84,.44,1);
+  --panel-w: 392px;
+}
+
+/* ---------- Tema Detach! (padrão) ---------- */
+:root,
+[data-theme="detach"] {
+  --bg:           var(--dtch-cream-50);
+  --surface:      var(--dtch-cream-100);
+  --text:         var(--dtch-ink);
+  --text-dim:     rgba(30, 11, 11, 0.62);
+  --text-faint:   rgba(30, 11, 11, 0.34);
+  --accent:       var(--dtch-orange);
+  --accent-soft:  rgba(255, 75, 39, 0.12);
+  --on-accent:    var(--dtch-black);
+  --live:         var(--dtch-purple);
+  --live-glow:    rgba(112, 41, 255, 0.45);
+  --line:         rgba(30, 11, 11, 0.12);
+  --line-strong:  rgba(30, 11, 11, 0.28);
+  --danger:       #C42A0E;
+
+  --font-display: "Alfabet", "Archivo", system-ui, sans-serif;
+  --font-body:    "Alfabet", "Archivo", system-ui, sans-serif;
+  --font-stretch-display: 125%;   /* Archivo expandida ≈ título do site */
+  --weight-display: 800;
+  --title-case: uppercase;
+
+  --radius-sm: 0px;
+  --radius-md: 0px;
+
+  --glow-bg: radial-gradient(circle, rgba(255,75,39,0.16) 0%, rgba(180,153,255,0.10) 38%, transparent 68%);
+  --reveal-shadow: none;
+}
+
+/* ---------- Tema Inspect! (original) ---------- */
+[data-theme="inspect"] {
+  --bg:           var(--insp-bg);
+  --surface:      var(--insp-surface);
+  --text:         var(--insp-text);
+  --text-dim:     rgba(245, 237, 235, 0.45);
+  --text-faint:   rgba(245, 237, 235, 0.22);
+  --accent:       var(--insp-green);
+  --accent-soft:  rgba(105, 224, 152, 0.14);
+  --on-accent:    var(--insp-bg);
+  --live:         var(--insp-pink);
+  --live-glow:    rgba(248, 158, 194, 0.6);
+  --line:         rgba(245, 237, 235, 0.10);
+  --line-strong:  rgba(245, 237, 235, 0.18);
+  --danger:       #FF7A7A;
+
+  --font-display: "Source Code Pro", ui-monospace, monospace;
+  --font-body:    "Source Code Pro", ui-monospace, monospace;
+  --font-stretch-display: 100%;
+  --weight-display: 900;
+  --title-case: none;
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+
+  --glow-bg: radial-gradient(circle, rgba(105,224,152,0.16) 0%, rgba(105,224,152,0.05) 40%, transparent 70%);
+  --reveal-shadow: 0 0 46px rgba(105,224,152,0.55), 0 0 110px rgba(105,224,152,0.25);
+}
